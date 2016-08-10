@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
 import ListeDepenses from './ListeDepenses';
 import AddDepenses from './AddDepense';
+import $ from 'jquery';
+
 
 class Depenses extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      liste: [
-        {
-          id: 1,
-          categorie: 'Épicerie',
-          desc: 'IGA',
-          montant: 60.50
-        },
-        {
-          id: 2,
-          categorie: 'Voiture',
-          desc: 'Changement huile',
-          montant: 45.55
-        },
-        {
-          id: 3,
-          categorie: 'Voiture',
-          desc: 'Frein',
-          montant: 85.55
-        }
-      ],
+      liste: [],
       categorie : [
         {
           idCat: 1,
@@ -46,6 +29,17 @@ class Depenses extends Component {
     
     addDep.push({id:idNew,categorie:'Voiture',idCategorie:20,desc:'Serrure',montant:22.33});
     this.setState({liste:addDep});
+  }
+
+  componentDidMount() {
+    var _this = this;
+    $.getJSON('./src/data/getDepenseMockup.json')
+    	.done(function(response) {
+	      _this.setState({liste: response.liste})
+	    })
+	    .fail(function(x,y,err){
+	    	console.log('fail!!! ' + err);
+	    });
   }
 
   render() {

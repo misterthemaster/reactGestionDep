@@ -12,8 +12,8 @@ class AddDepense extends Component {
 	    	<h3>Ajouter</h3>
 	    	<select name="" className="form-control">
 				<option value="">Choisir un catégorie...</option>
-				{this.props.listeCat.map(({nom,id}) =>
-			    	<option key={id}>{nom}</option>		
+				{this.props.listeCat.map(({nom,idCat}) =>
+			    	<option key={idCat}>{nom}</option>		
 				)}
 	    	</select>
 	    	<input type="text" className="form-control" placeholder="Nom de la dépense"/>
