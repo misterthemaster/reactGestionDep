@@ -9,32 +9,43 @@ class Depenses extends Component {
     this.state = {
       liste: [
         {
-          id: 0,
+          id: 1,
           categorie: 'Épicerie',
-          idCategorie: 10,
           desc: 'IGA',
           montant: 60.50
         },
         {
-          id: 3,
+          id: 2,
           categorie: 'Voiture',
-          idCategorie: 20,
           desc: 'Changement huile',
           montant: 45.55
         },
         {
-          id: 2,
+          id: 3,
           categorie: 'Voiture',
-          idCategorie: 20,
           desc: 'Frein',
           montant: 85.55
         }
+      ],
+      categorie : [
+        {
+          idCat: 1,
+          nom: 'Voiture'
+        },
+        {
+          idCat: 2,
+          nom: 'Épicerie'
+        },
       ]
     };
   }
 
   handleSaveDepense = (id) => {
-    console.log('click' + id);
+    var addDep = this.state.liste;
+    var idNew = addDep.length + 1;
+    
+    addDep.push({id:idNew,categorie:'Voiture',idCategorie:20,desc:'Serrure',montant:22.33});
+    this.setState({liste:addDep});
   }
 
   render() {
@@ -42,7 +53,7 @@ class Depenses extends Component {
       <div>
         <h1>Liste des dépenses</h1>
         <ListeDepenses listeDep={this.state.liste}/>
-        <AddDepenses onBtnSave={this.handleSaveDepense}/>
+        <AddDepenses listeCat={this.state.categorie} onBtnSave={this.handleSaveDepense}/>
       </div>
     );
   }
