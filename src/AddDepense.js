@@ -8,13 +8,13 @@ class AddDepense extends Component {
 	    this.state = {
 	    	categorie:'Voiture',
 	      	nomDep: '',
-	      	depense: 0,
+	      	montant: 0,
 	      	desc: ''
 	    };
 	}
 
 	handleClickForm = () => {
-		this.props.onBtnSave(5);
+		this.props.onBtnSave(this.state.nomDep,this.state.montant,this.state.categorie);
 	}
 
 	handleChangeState = (id,value) => {
