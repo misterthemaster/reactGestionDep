@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Input from './Input';
+import Select from './Select';
+
 
 class AddDepense extends Component {
 	constructor(props) {
@@ -9,7 +11,7 @@ class AddDepense extends Component {
 	    	categorie:'Voiture',
 	      	nomDep: '',
 	      	montant: 0,
-	      	desc: ''
+	      	desc:'',
 	    };
 	}
 
@@ -26,12 +28,7 @@ class AddDepense extends Component {
 		return (
 		    <div className="col-md-4 col-sm-5 formAjout">
 		    	<h3>Ajouter</h3>
-		    	<select name="" className="form-control">
-					<option value="">Choisir un catégorie...</option>
-					{this.props.listeCat.map(({nom,idCat}) =>
-				    	<option key={idCat}>{nom}</option>		
-					)}
-		    	</select>
+		    	<Select id="categorie" listeCat={this.props.listeCat} onChange={this.handleChangeState}/>
 		    	<Input id="nomDep" value={this.state.nomDep} onChange={this.handleChangeState} placeholder="Nom de la dépense"/>
 		    	<Input id="montant" value={this.state.montant} onChange={this.handleChangeState} placeholder="Montant"/>
 		    	<textarea className="form-control" placeholder="Note sur la dépense"></textarea>

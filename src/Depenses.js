@@ -23,11 +23,11 @@ class Depenses extends Component {
     };
   }
 
-  handleSaveDepense = (desc,depense,categorie) => {
+  handleSaveDepense = (titre,depense,categorie) => {
     var addDep = this.state.liste;
     var idNew = addDep.length + 1;
     
-    addDep.push({id:idNew,categorie:categorie,desc:desc,montant:depense});
+    addDep.push({id:idNew,categorie:categorie,titre:titre,montant:depense});
     this.setState({liste:addDep});
   }
 

@@ -18,8 +18,8 @@ const Categorie = ({...props}) => {
 			<h3>{props.nom}</h3>
 			<table className="table table-bordered table-striped">
 				<tbody>
-					{props.liste.map(({id, desc, montant}) =>
-						<LigneDep key={id} id={id} nomDep={desc} montant={montant}/>	
+					{props.liste.map(({id, titre, montant}) =>
+						<LigneDep key={id} id={id} nomDep={titre} montant={montant}/>	
 					)}
 				</tbody>
 			</table>
