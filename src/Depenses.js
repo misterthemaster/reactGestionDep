@@ -23,12 +23,15 @@ class Depenses extends Component {
     };
   }
 
-  handleSaveDepense = (titre,depense,categorie) => {
+  handleSaveDepense = (formDep) => {
     var addDep = this.state.liste;
     var idNew = addDep.length + 1;
-    
-    addDep.push({id:idNew,categorie:categorie,titre:titre,montant:depense});
-    this.setState({liste:addDep});
+    var listeDesDep = this.state.liste;
+
+    formDep.id = idNew;
+    listeDesDep.push(formDep);
+    console.log(formDep);
+    this.setState({liste:listeDesDep});
   }
 
   componentDidMount() {

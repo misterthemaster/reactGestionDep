@@ -9,7 +9,7 @@ class Input extends Component {
 
 	render() {
 		return (
-		    <input type="text" id={this.props.id} className="form-control" onChange={this.handleChange} value={this.props.value} placeholder={this.props.placeholder} />
+		    <textarea type="text" id={this.props.id} className="form-control" onChange={this.handleChange} value={this.props.value} placeholder={this.props.placeholder} />
 		);
 	}
 }

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Input from './Input';
 import Select from './Select';
-
+import Textarea from './Textarea';
+import Datetime from 'react-datetime';
+import 'react-datetime/css/react-datetime.css';
+import moment from 'moment';
 
 class AddDepense extends Component {
 	constructor(props) {
@@ -10,18 +13,24 @@ class AddDepense extends Component {
 	    this.state = {
 	    	categorie:'Voiture',
 	      	nomDep: '',
-	      	montant: 0,
+	      	montant: undefined,
 	      	desc:'',
+	      	dateDep: moment().format('YYYY/MM/D')
 	    };
 	}
 
 	handleClickForm = () => {
-		this.props.onBtnSave(this.state.nomDep,this.state.montant,this.state.categorie);
+		this.props.onBtnSave(this.state);
 	}
 
 	handleChangeState = (id,value) => {
+		//console.log(id +'--'+value );
 	    this.setState({[id]:value});
-	    console.log(this.state.nomDep + '--' +this.state.montant);
+	}
+
+	handleChangeStateTime = (ladate) => {
+		//console.log( moment(ladate._d).format('YYYY/MM/D') );
+		this.setState({dateDep:moment(ladate._d).format('YYYY/MM/D')});
 	}
 
 	render() {
@@ -31,7 +40,8 @@ class AddDepense extends Component {
 		    	<Select id="categorie" listeCat={this.props.listeCat} onChange={this.handleChangeState}/>
 		    	<Input id="nomDep" value={this.state.nomDep} onChange={this.handleChangeState} placeholder="Nom de la dépense"/>
 		    	<Input id="montant" value={this.state.montant} onChange={this.handleChangeState} placeholder="Montant"/>
-		    	<textarea className="form-control" placeholder="Note sur la dépense"></textarea>
+		    	<Datetime id="dateDep" dateFormat="YYYY/MM/D" value={this.state.dateDep} onChange={this.handleChangeStateTime}/>
+		    	<Textarea id="desc" value={this.state.desc} onChange={this.handleChangeState} placeholder="Commentaire"/>
 		    	<button className="btn btn-primary form-control" onClick={this.handleClickForm.bind()}>Ajouter</button>
 		    </div>
 		);

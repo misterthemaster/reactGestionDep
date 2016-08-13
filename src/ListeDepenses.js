@@ -18,8 +18,8 @@ const Categorie = ({...props}) => {
 			<h3>{props.nom}</h3>
 			<table className="table table-bordered table-striped">
 				<tbody>
-					{props.liste.map(({id, titre, montant}) =>
-						<LigneDep key={id} id={id} nomDep={titre} montant={montant}/>	
+					{props.liste.map(({id, nomDep, montant, dateDep}) =>
+						<LigneDep key={id} id={id} nomDep={nomDep} montant={montant} dateDep={dateDep}/>	
 					)}
 				</tbody>
 			</table>
@@ -32,6 +32,7 @@ const LigneDep = ({...props}) => {
 		<tr>
 			<td>{props.nomDep}</td>
 			<td>{props.montant}</td>
+			<td>{props.dateDep}</td>
 			<td><a data-id={props.id}>Edit</a></td>
 			<td><a data-id={props.id}>Effacer</a></td>
 		</tr>
